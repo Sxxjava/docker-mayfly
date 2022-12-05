@@ -1,0 +1,346 @@
+-- 旧版本更新，需要执行以下sql脚本内容
+
+-- 菜单与权限调整
+DELETE FROM t_sys_resource;
+INSERT INTO `t_sys_resource` VALUES (1, 0, 1, 1, '首页', '/home', 1, '{\"component\":\"Home\",\"icon\":\"HomeFilled\",\"isAffix\":true,\"isKeepAlive\":true,\"routeName\":\"Home\"}', 1, 'admin', 1, 'admin', '2021-05-25 16:44:41', '2021-05-27 09:12:56');
+INSERT INTO `t_sys_resource` VALUES (2, 0, 1, 1, '机器管理', '/machine', 4, '{\"icon\":\"Monitor\",\"isKeepAlive\":true,\"redirect\":\"machine/list\",\"routeName\":\"Machine\"}', 1, 'admin', 1, 'admin', '2021-05-25 16:48:16', '2022-10-06 14:58:49');
+INSERT INTO `t_sys_resource` VALUES (3, 2, 1, 1, '机器列表', 'machines', 2, '{\"component\":\"MachineList\",\"icon\":\"Menu\",\"isKeepAlive\":true,\"routeName\":\"MachineList\"}', 2, 'admin', 1, 'admin', '2021-05-25 16:50:04', '2021-06-30 16:20:08');
+INSERT INTO `t_sys_resource` VALUES (4, 0, 1, 1, '系统管理', '/sys', 8, '{\"icon\":\"Setting\",\"isKeepAlive\":true,\"redirect\":\"/sys/resources\",\"routeName\":\"sys\"}', 1, 'admin', 1, 'admin', '2021-05-26 15:20:20', '2022-10-06 14:59:53');
+INSERT INTO `t_sys_resource` VALUES (5, 4, 1, 1, '资源管理', 'resources', 3, '{\"component\":\"ResourceList\",\"icon\":\"Menu\",\"isKeepAlive\":true,\"routeName\":\"ResourceList\"}', 1, 'admin', 1, 'admin', '2021-05-26 15:23:07', '2021-06-08 11:27:55');
+INSERT INTO `t_sys_resource` VALUES (11, 4, 1, 1, '角色管理', 'roles', 2, '{\"component\":\"RoleList\",\"icon\":\"Menu\",\"isKeepAlive\":true,\"routeName\":\"RoleList\"}', 1, 'admin', 1, 'admin', '2021-05-27 11:15:35', '2021-06-03 09:59:41');
+INSERT INTO `t_sys_resource` VALUES (12, 3, 2, 1, '机器终端按钮', 'machine:terminal', 4, '', 1, 'admin', 1, 'admin', '2021-05-28 14:06:02', '2021-05-31 17:47:59');
+INSERT INTO `t_sys_resource` VALUES (14, 4, 1, 1, '账号管理', 'accounts', 1, '{\"component\":\"AccountList\",\"icon\":\"Menu\",\"isKeepAlive\":true,\"routeName\":\"AccountList\"}', 1, 'admin', 1, 'admin', '2021-05-28 14:56:25', '2021-06-03 09:39:22');
+INSERT INTO `t_sys_resource` VALUES (15, 3, 2, 1, '文件管理按钮', 'machine:file', 5, NULL, 1, 'admin', 1, 'admin', '2021-05-31 17:44:37', '2021-05-31 17:48:07');
+INSERT INTO `t_sys_resource` VALUES (16, 3, 2, 1, '机器添加按钮', 'machine:add', 1, NULL, 1, 'admin', 1, 'admin', '2021-05-31 17:46:11', '2021-05-31 19:34:15');
+INSERT INTO `t_sys_resource` VALUES (17, 3, 2, 1, '机器编辑按钮', 'machine:update', 2, NULL, 1, 'admin', 1, 'admin', '2021-05-31 17:46:23', '2021-05-31 19:34:18');
+INSERT INTO `t_sys_resource` VALUES (18, 3, 2, 1, '机器删除按钮', 'machine:del', 3, NULL, 1, 'admin', 1, 'admin', '2021-05-31 17:46:36', '2021-05-31 19:34:17');
+INSERT INTO `t_sys_resource` VALUES (19, 14, 2, 1, '角色分配按钮', 'account:saveRoles', 1, NULL, 1, 'admin', 1, 'admin', '2021-05-31 17:50:51', '2021-05-31 19:19:30');
+INSERT INTO `t_sys_resource` VALUES (20, 11, 2, 1, '分配菜单&权限按钮', 'role:saveResources', 1, NULL, 1, 'admin', 1, 'admin', '2021-05-31 17:51:41', '2021-05-31 19:33:37');
+INSERT INTO `t_sys_resource` VALUES (21, 14, 2, 1, '账号删除按钮', 'account:del', 2, 'null', 1, 'admin', 1, 'admin', '2021-05-31 18:02:01', '2021-06-10 17:12:17');
+INSERT INTO `t_sys_resource` VALUES (22, 11, 2, 1, '角色删除按钮', 'role:del', 2, NULL, 1, 'admin', 1, 'admin', '2021-05-31 18:02:29', '2021-05-31 19:33:38');
+INSERT INTO `t_sys_resource` VALUES (23, 11, 2, 1, '角色新增按钮', 'role:add', 3, NULL, 1, 'admin', 1, 'admin', '2021-05-31 18:02:44', '2021-05-31 19:33:39');
+INSERT INTO `t_sys_resource` VALUES (24, 11, 2, 1, '角色编辑按钮', 'role:update', 4, NULL, 1, 'admin', 1, 'admin', '2021-05-31 18:02:57', '2021-05-31 19:33:40');
+INSERT INTO `t_sys_resource` VALUES (25, 5, 2, 1, '资源新增按钮', 'resource:add', 1, NULL, 1, 'admin', 1, 'admin', '2021-05-31 18:03:33', '2021-05-31 19:31:47');
+INSERT INTO `t_sys_resource` VALUES (26, 5, 2, 1, '资源删除按钮', 'resource:delete', 2, NULL, 1, 'admin', 1, 'admin', '2021-05-31 18:03:47', '2021-05-31 19:29:40');
+INSERT INTO `t_sys_resource` VALUES (27, 5, 2, 1, '资源编辑按钮', 'resource:update', 3, NULL, 1, 'admin', 1, 'admin', '2021-05-31 18:04:03', '2021-05-31 19:29:40');
+INSERT INTO `t_sys_resource` VALUES (28, 5, 2, 1, '资源禁用启用按钮', 'resource:changeStatus', 4, NULL, 1, 'admin', 1, 'admin', '2021-05-31 18:04:33', '2021-05-31 18:04:33');
+INSERT INTO `t_sys_resource` VALUES (29, 14, 2, 1, '账号添加按钮', 'account:add', 3, NULL, 1, 'admin', 1, 'admin', '2021-05-31 19:23:42', '2021-05-31 19:23:42');
+INSERT INTO `t_sys_resource` VALUES (30, 14, 2, 1, '账号编辑修改按钮', 'account:update', 4, NULL, 1, 'admin', 1, 'admin', '2021-05-31 19:23:58', '2021-05-31 19:23:58');
+INSERT INTO `t_sys_resource` VALUES (31, 14, 2, 1, '账号管理基本权限', 'account', 0, 'null', 1, 'admin', 1, 'admin', '2021-05-31 21:25:06', '2021-06-22 11:20:34');
+INSERT INTO `t_sys_resource` VALUES (32, 5, 2, 1, '资源管理基本权限', 'resource', 0, NULL, 1, 'admin', 1, 'admin', '2021-05-31 21:25:25', '2021-05-31 21:25:25');
+INSERT INTO `t_sys_resource` VALUES (33, 11, 2, 1, '角色管理基本权限', 'role', 0, NULL, 1, 'admin', 1, 'admin', '2021-05-31 21:25:40', '2021-05-31 21:25:40');
+INSERT INTO `t_sys_resource` VALUES (34, 14, 2, 1, '账号启用禁用按钮', 'account:changeStatus', 5, NULL, 1, 'admin', 1, 'admin', '2021-05-31 21:29:48', '2021-05-31 21:29:48');
+INSERT INTO `t_sys_resource` VALUES (36, 0, 1, 1, 'DBMS', '/dbms', 5, '{\"icon\":\"Grid\",\"isKeepAlive\":true,\"routeName\":\"DBMS\"}', 1, 'admin', 1, 'admin', '2021-06-01 14:01:33', '2022-10-06 15:00:40');
+INSERT INTO `t_sys_resource` VALUES (37, 3, 2, 1, '添加文件配置', 'machine:addFile', 6, 'null', 1, 'admin', 1, 'admin', '2021-06-01 19:54:23', '2021-06-01 19:54:23');
+INSERT INTO `t_sys_resource` VALUES (38, 36, 1, 1, '数据操作', 'sql-exec', 1, '{\"component\":\"SqlExec\",\"icon\":\"Search\",\"isKeepAlive\":true,\"routeName\":\"SqlExec\"}', 1, 'admin', 1, 'admin', '2021-06-03 09:09:29', '2021-11-08 09:59:26');
+INSERT INTO `t_sys_resource` VALUES (39, 0, 1, 1, '个人中心', '/personal', 2, '{\"component\":\"Personal\",\"icon\":\"UserFilled\",\"isHide\":true,\"isKeepAlive\":true,\"routeName\":\"Personal\"}', 1, 'admin', 1, 'admin', '2021-06-03 14:25:35', '2021-09-10 09:18:46');
+INSERT INTO `t_sys_resource` VALUES (40, 3, 2, 1, '文件管理-新增按钮', 'machine:file:add', 7, 'null', 1, 'admin', 1, 'admin', '2021-06-08 11:06:26', '2021-06-08 11:12:28');
+INSERT INTO `t_sys_resource` VALUES (41, 3, 2, 1, '文件管理-删除按钮', 'machine:file:del', 8, 'null', 1, 'admin', 1, 'admin', '2021-06-08 11:06:49', '2021-06-08 11:06:49');
+INSERT INTO `t_sys_resource` VALUES (42, 3, 2, 1, '文件管理-写入or下载文件权限', 'machine:file:write', 9, 'null', 1, 'admin', 1, 'admin', '2021-06-08 11:07:27', '2021-06-08 11:07:27');
+INSERT INTO `t_sys_resource` VALUES (43, 3, 2, 1, '文件管理-文件上传按钮', 'machine:file:upload', 10, 'null', 1, 'admin', 1, 'admin', '2021-06-08 11:07:42', '2021-06-08 11:07:42');
+INSERT INTO `t_sys_resource` VALUES (44, 3, 2, 1, '文件管理-删除文件按钮', 'machine:file:rm', 11, 'null', 1, 'admin', 1, 'admin', '2021-06-08 11:08:12', '2021-06-08 11:08:12');
+INSERT INTO `t_sys_resource` VALUES (45, 3, 2, 1, '脚本管理-保存脚本按钮', 'machine:script:save', 12, 'null', 1, 'admin', 1, 'admin', '2021-06-08 11:09:01', '2021-06-08 11:09:01');
+INSERT INTO `t_sys_resource` VALUES (46, 3, 2, 1, '脚本管理-删除按钮', 'machine:script:del', 13, 'null', 1, 'admin', 1, 'admin', '2021-06-08 11:09:27', '2021-06-08 11:09:27');
+INSERT INTO `t_sys_resource` VALUES (47, 3, 2, 1, '脚本管理-执行按钮', 'machine:script:run', 14, 'null', 1, 'admin', 1, 'admin', '2021-06-08 11:09:50', '2021-06-08 11:09:50');
+INSERT INTO `t_sys_resource` VALUES (49, 36, 1, 1, '数据库管理', 'dbs', 2, '{\"component\":\"DbList\",\"icon\":\"Menu\",\"isKeepAlive\":true,\"routeName\":\"DbList\"}', 1, 'admin', 1, 'admin', '2021-07-07 15:13:55', '2021-07-07 15:13:55');
+INSERT INTO `t_sys_resource` VALUES (54, 49, 2, 1, '数据库保存', 'db:save', 1, 'null', 1, 'admin', 1, 'admin', '2021-07-08 17:30:36', '2021-07-08 17:31:05');
+INSERT INTO `t_sys_resource` VALUES (55, 49, 2, 1, '数据库删除', 'db:del', 2, 'null', 1, 'admin', 1, 'admin', '2021-07-08 17:30:48', '2021-07-08 17:30:48');
+INSERT INTO `t_sys_resource` VALUES (57, 3, 2, 1, '基本权限', 'machine', 0, 'null', 1, 'admin', 1, 'admin', '2021-07-09 10:48:02', '2021-07-09 10:48:02');
+INSERT INTO `t_sys_resource` VALUES (58, 49, 2, 1, '基本权限', 'db', 0, 'null', 1, 'admin', 1, 'admin', '2021-07-09 10:48:22', '2021-07-09 10:48:22');
+INSERT INTO `t_sys_resource` VALUES (59, 38, 2, 1, '基本权限', 'db:exec', 1, 'null', 1, 'admin', 1, 'admin', '2021-07-09 10:50:13', '2021-07-09 10:50:13');
+INSERT INTO `t_sys_resource` VALUES (60, 0, 1, 1, 'Redis', '/redis', 6, '{\"icon\":\"Menu\",\"isKeepAlive\":true,\"routeName\":\"RDS\"}', 1, 'admin', 1, 'admin', '2021-07-19 20:15:41', '2022-10-06 15:01:29');
+INSERT INTO `t_sys_resource` VALUES (61, 60, 1, 1, '数据操作', 'data-operation', 1, '{\"component\":\"DataOperation\",\"icon\":\"Search\",\"isKeepAlive\":true,\"routeName\":\"DataOperation\"}', 1, 'admin', 1, 'admin', '2021-07-19 20:17:29', '2021-07-20 10:45:28');
+INSERT INTO `t_sys_resource` VALUES (62, 61, 2, 1, '基本权限', 'redis:data', 1, 'null', 1, 'admin', 1, 'admin', '2021-07-19 20:18:54', '2021-07-19 20:18:54');
+INSERT INTO `t_sys_resource` VALUES (63, 60, 1, 1, 'redis管理', 'manage', 2, '{\"component\":\"RedisList\",\"icon\":\"Menu\",\"isKeepAlive\":true,\"routeName\":\"RedisList\"}', 1, 'admin', 1, 'admin', '2021-07-20 10:48:04', '2021-07-20 10:48:04');
+INSERT INTO `t_sys_resource` VALUES (64, 63, 2, 1, '基本权限', 'redis:manage', 1, 'null', 1, 'admin', 1, 'admin', '2021-07-20 10:48:26', '2021-07-20 10:48:26');
+INSERT INTO `t_sys_resource` VALUES (71, 61, 2, 1, '数据保存', 'redis:data:save', 6, 'null', 1, 'admin', 1, 'admin', '2021-08-17 11:20:37', '2021-08-17 11:20:37');
+INSERT INTO `t_sys_resource` VALUES (72, 3, 2, 1, '终止进程', 'machine:killprocess', 6, 'null', 1, 'admin', 1, 'admin', '2021-08-17 11:20:37', '2021-08-17 11:20:37');
+INSERT INTO `t_sys_resource` VALUES (79, 0, 1, 1, 'Mongo', '/mongo', 7, '{\"icon\":\"Document\",\"isKeepAlive\":true,\"routeName\":\"Mongo\"}', 1, 'admin', 1, 'admin', '2022-05-13 14:00:41', '2022-10-06 15:01:34');
+INSERT INTO `t_sys_resource` VALUES (80, 79, 1, 1, '数据操作', 'mongo-data-operation', 1, '{\"component\":\"MongoDataOp\",\"icon\":\"Document\",\"isKeepAlive\":true,\"routeName\":\"MongoDataOp\"}', 1, 'admin', 1, 'admin', '2022-05-13 14:03:58', '2022-05-14 20:16:07');
+INSERT INTO `t_sys_resource` VALUES (81, 80, 2, 1, '基本权限', 'mongo:base', 1, 'null', 1, 'admin', 1, 'admin', '2022-05-13 14:04:16', '2022-05-13 14:04:16');
+INSERT INTO `t_sys_resource` VALUES (82, 79, 1, 1, 'Mongo管理', 'mongo-manage', 2, '{\"component\":\"MongoList\",\"icon\":\"Menu\",\"isKeepAlive\":true,\"routeName\":\"MongoList\"}', 1, 'admin', 1, 'admin', '2022-05-16 18:13:06', '2022-05-16 18:13:06');
+INSERT INTO `t_sys_resource` VALUES (83, 82, 2, 1, '基本权限', 'mongo:manage:base', 1, 'null', 1, 'admin', 1, 'admin', '2022-05-16 18:13:25', '2022-05-16 18:13:25');
+INSERT INTO `t_sys_resource` VALUES (84, 4, 1, 1, '操作日志', 'syslogs', 4, '{\"component\":\"SyslogList\",\"icon\":\"Tickets\",\"routeName\":\"SyslogList\"}', 1, 'admin', 1, 'admin', '2022-07-13 19:57:07', '2022-07-13 22:58:19');
+INSERT INTO `t_sys_resource` VALUES (85, 84, 2, 1, '操作日志基本权限', 'syslog', 1, 'null', 1, 'admin', 1, 'admin', '2022-07-13 19:57:55', '2022-07-13 19:57:55');
+INSERT INTO `t_sys_resource` VALUES (87, 4, 1, 1, '系统配置', 'configs', 5, '{\"component\":\"ConfigList\",\"icon\":\"Setting\",\"isKeepAlive\":true,\"routeName\":\"ConfigList\"}', 1, 'admin', 1, 'admin', '2022-08-25 22:18:55', '2022-08-25 22:19:18');
+INSERT INTO `t_sys_resource` VALUES (88, 87, 2, 1, '基本权限', 'config:base', 1, 'null', 1, 'admin', 1, 'admin', '2022-08-25 22:19:35', '2022-08-25 22:19:35');
+INSERT INTO `t_sys_resource` VALUES (93, 0, 1, 1, '标签管理', '/tag', 3, '{\"icon\":\"CollectionTag\",\"isKeepAlive\":true,\"routeName\":\"Tag\"}', 1, 'admin', 1, 'admin', '2022-10-24 15:18:40', '2022-10-24 15:24:29');
+INSERT INTO `t_sys_resource` VALUES (94, 93, 1, 1, '标签树', 'tag-trees', 1, '{\"component\":\"TagTreeList\",\"icon\":\"CollectionTag\",\"isKeepAlive\":true,\"routeName\":\"TagTreeList\"}', 1, 'admin', 1, 'admin', '2022-10-24 15:19:40', '2022-10-24 15:28:07');
+INSERT INTO `t_sys_resource` VALUES (95, 93, 1, 1, '团队管理', 'teams', 2, '{\"component\":\"TeamList\",\"icon\":\"UserFilled\",\"isKeepAlive\":true,\"routeName\":\"TeamList\"}', 1, 'admin', 1, 'admin', '2022-10-24 15:20:09', '2022-10-24 15:24:01');
+INSERT INTO `t_sys_resource` VALUES (96, 94, 2, 1, '保存标签', 'tag:save', 1, 'null', 1, 'admin', 1, 'admin', '2022-10-24 15:20:40', '2022-10-26 13:58:36');
+INSERT INTO `t_sys_resource` VALUES (97, 95, 2, 1, '保存团队', 'team:save', 1, 'null', 1, 'admin', 1, 'admin', '2022-10-24 15:20:57', '2022-10-26 13:58:56');
+INSERT INTO `t_sys_resource` VALUES (98, 94, 2, 1, '删除标签', 'tag:del', 2, 'null', 1, 'admin', 1, 'admin', '2022-10-26 13:58:47', '2022-10-26 13:58:47');
+INSERT INTO `t_sys_resource` VALUES (99, 95, 2, 1, '删除团队', 'team:del', 2, 'null', 1, 'admin', 1, 'admin', '2022-10-26 13:59:06', '2022-10-26 13:59:06');
+INSERT INTO `t_sys_resource` VALUES (100, 95, 2, 1, '新增团队成员', 'team:member:save', 3, 'null', 1, 'admin', 1, 'admin', '2022-10-26 13:59:27', '2022-10-26 13:59:27');
+INSERT INTO `t_sys_resource` VALUES (101, 95, 2, 1, '移除团队成员', 'team:member:del', 4, 'null', 1, 'admin', 1, 'admin', '2022-10-26 13:59:43', '2022-10-26 13:59:43');
+INSERT INTO `t_sys_resource` VALUES (102, 95, 2, 1, '保存团队标签', 'team:tag:save', 5, 'null', 1, 'admin', 1, 'admin', '2022-10-26 13:59:57', '2022-10-26 13:59:57');
+
+DELETE FROM t_sys_role_resource;
+INSERT INTO `t_sys_role_resource` VALUES (1, 1, 1, 1, 'admin', '2021-05-27 15:07:39');
+INSERT INTO `t_sys_role_resource` VALUES (323, 1, 2, 1, 'admin', '2021-05-28 09:04:50');
+INSERT INTO `t_sys_role_resource` VALUES (326, 1, 4, 1, 'admin', '2021-05-28 09:04:50');
+INSERT INTO `t_sys_role_resource` VALUES (327, 1, 5, 1, 'admin', '2021-05-28 09:04:50');
+INSERT INTO `t_sys_role_resource` VALUES (328, 1, 11, 1, 'admin', '2021-05-28 09:04:50');
+INSERT INTO `t_sys_role_resource` VALUES (335, 1, 14, 1, 'admin', '2021-05-28 17:42:21');
+INSERT INTO `t_sys_role_resource` VALUES (336, 1, 3, 1, 'admin', '2021-05-28 17:42:43');
+INSERT INTO `t_sys_role_resource` VALUES (337, 1, 12, 1, 'admin', '2021-05-28 17:42:43');
+INSERT INTO `t_sys_role_resource` VALUES (338, 6, 2, 1, 'admin', '2021-05-28 19:19:38');
+INSERT INTO `t_sys_role_resource` VALUES (339, 6, 3, 1, 'admin', '2021-05-28 19:19:38');
+INSERT INTO `t_sys_role_resource` VALUES (342, 6, 1, 1, 'admin', '2021-05-29 01:31:22');
+INSERT INTO `t_sys_role_resource` VALUES (343, 5, 1, 1, 'admin', '2021-05-31 14:05:23');
+INSERT INTO `t_sys_role_resource` VALUES (344, 5, 4, 1, 'admin', '2021-05-31 14:05:23');
+INSERT INTO `t_sys_role_resource` VALUES (345, 5, 14, 1, 'admin', '2021-05-31 14:05:23');
+INSERT INTO `t_sys_role_resource` VALUES (346, 5, 5, 1, 'admin', '2021-05-31 14:05:23');
+INSERT INTO `t_sys_role_resource` VALUES (347, 5, 11, 1, 'admin', '2021-05-31 14:05:23');
+INSERT INTO `t_sys_role_resource` VALUES (348, 5, 3, 1, 'admin', '2021-05-31 16:33:14');
+INSERT INTO `t_sys_role_resource` VALUES (349, 5, 12, 1, 'admin', '2021-05-31 16:33:14');
+INSERT INTO `t_sys_role_resource` VALUES (350, 5, 2, 1, 'admin', '2021-05-31 16:33:14');
+INSERT INTO `t_sys_role_resource` VALUES (353, 1, 15, 1, 'admin', '2021-05-31 17:48:33');
+INSERT INTO `t_sys_role_resource` VALUES (354, 1, 16, 1, 'admin', '2021-05-31 17:48:33');
+INSERT INTO `t_sys_role_resource` VALUES (355, 1, 17, 1, 'admin', '2021-05-31 17:48:33');
+INSERT INTO `t_sys_role_resource` VALUES (356, 1, 18, 1, 'admin', '2021-05-31 17:48:33');
+INSERT INTO `t_sys_role_resource` VALUES (358, 1, 20, 1, 'admin', '2021-05-31 17:52:08');
+INSERT INTO `t_sys_role_resource` VALUES (360, 1, 22, 1, 'admin', '2021-05-31 18:05:04');
+INSERT INTO `t_sys_role_resource` VALUES (361, 1, 23, 1, 'admin', '2021-05-31 18:05:04');
+INSERT INTO `t_sys_role_resource` VALUES (362, 1, 24, 1, 'admin', '2021-05-31 18:05:04');
+INSERT INTO `t_sys_role_resource` VALUES (363, 1, 25, 1, 'admin', '2021-05-31 18:05:04');
+INSERT INTO `t_sys_role_resource` VALUES (364, 1, 26, 1, 'admin', '2021-05-31 18:05:04');
+INSERT INTO `t_sys_role_resource` VALUES (365, 1, 27, 1, 'admin', '2021-05-31 18:05:04');
+INSERT INTO `t_sys_role_resource` VALUES (366, 1, 28, 1, 'admin', '2021-05-31 18:05:04');
+INSERT INTO `t_sys_role_resource` VALUES (369, 1, 31, 1, 'admin', '2021-05-31 21:25:56');
+INSERT INTO `t_sys_role_resource` VALUES (370, 1, 32, 1, 'admin', '2021-05-31 21:25:56');
+INSERT INTO `t_sys_role_resource` VALUES (371, 1, 33, 1, 'admin', '2021-05-31 21:25:56');
+INSERT INTO `t_sys_role_resource` VALUES (374, 1, 36, 1, 'admin', '2021-06-01 14:01:57');
+INSERT INTO `t_sys_role_resource` VALUES (375, 1, 19, 1, 'admin', '2021-06-01 17:34:03');
+INSERT INTO `t_sys_role_resource` VALUES (376, 1, 21, 1, 'admin', '2021-06-01 17:34:03');
+INSERT INTO `t_sys_role_resource` VALUES (377, 1, 29, 1, 'admin', '2021-06-01 17:34:03');
+INSERT INTO `t_sys_role_resource` VALUES (378, 1, 30, 1, 'admin', '2021-06-01 17:34:03');
+INSERT INTO `t_sys_role_resource` VALUES (379, 1, 34, 1, 'admin', '2021-06-01 17:34:03');
+INSERT INTO `t_sys_role_resource` VALUES (380, 1, 37, 1, 'admin', '2021-06-03 09:09:42');
+INSERT INTO `t_sys_role_resource` VALUES (381, 1, 38, 1, 'admin', '2021-06-03 09:09:42');
+INSERT INTO `t_sys_role_resource` VALUES (383, 1, 40, 1, 'admin', '2021-06-08 11:21:52');
+INSERT INTO `t_sys_role_resource` VALUES (384, 1, 41, 1, 'admin', '2021-06-08 11:21:52');
+INSERT INTO `t_sys_role_resource` VALUES (385, 1, 42, 1, 'admin', '2021-06-08 11:21:52');
+INSERT INTO `t_sys_role_resource` VALUES (386, 1, 43, 1, 'admin', '2021-06-08 11:21:52');
+INSERT INTO `t_sys_role_resource` VALUES (387, 1, 44, 1, 'admin', '2021-06-08 11:21:52');
+INSERT INTO `t_sys_role_resource` VALUES (388, 1, 45, 1, 'admin', '2021-06-08 11:21:52');
+INSERT INTO `t_sys_role_resource` VALUES (389, 1, 46, 1, 'admin', '2021-06-08 11:21:52');
+INSERT INTO `t_sys_role_resource` VALUES (390, 1, 47, 1, 'admin', '2021-06-08 11:21:52');
+INSERT INTO `t_sys_role_resource` VALUES (391, 6, 39, 1, 'admin', '2021-06-08 15:10:58');
+INSERT INTO `t_sys_role_resource` VALUES (392, 6, 15, 1, 'admin', '2021-06-08 15:10:58');
+INSERT INTO `t_sys_role_resource` VALUES (395, 6, 31, 1, 'admin', '2021-06-08 15:10:58');
+INSERT INTO `t_sys_role_resource` VALUES (396, 6, 33, 1, 'admin', '2021-06-08 15:10:58');
+INSERT INTO `t_sys_role_resource` VALUES (397, 6, 32, 1, 'admin', '2021-06-08 15:10:58');
+INSERT INTO `t_sys_role_resource` VALUES (398, 6, 4, 1, 'admin', '2021-06-08 15:10:58');
+INSERT INTO `t_sys_role_resource` VALUES (399, 6, 14, 1, 'admin', '2021-06-08 15:10:58');
+INSERT INTO `t_sys_role_resource` VALUES (400, 6, 11, 1, 'admin', '2021-06-08 15:10:58');
+INSERT INTO `t_sys_role_resource` VALUES (401, 6, 5, 1, 'admin', '2021-06-08 15:10:58');
+INSERT INTO `t_sys_role_resource` VALUES (403, 7, 1, 1, 'admin', '2021-07-06 15:07:09');
+INSERT INTO `t_sys_role_resource` VALUES (405, 1, 49, 1, 'admin', '2021-07-07 15:14:17');
+INSERT INTO `t_sys_role_resource` VALUES (410, 1, 54, 1, 'admin', '2021-07-08 17:32:19');
+INSERT INTO `t_sys_role_resource` VALUES (411, 1, 55, 1, 'admin', '2021-07-08 17:32:19');
+INSERT INTO `t_sys_role_resource` VALUES (413, 1, 57, 1, 'admin', '2021-07-09 10:48:50');
+INSERT INTO `t_sys_role_resource` VALUES (414, 1, 58, 1, 'admin', '2021-07-09 10:48:50');
+INSERT INTO `t_sys_role_resource` VALUES (415, 8, 1, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (416, 8, 39, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (418, 8, 57, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (419, 8, 12, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (420, 8, 15, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (421, 8, 38, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (422, 8, 58, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (423, 8, 2, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (425, 8, 3, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (426, 8, 36, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (427, 8, 49, 1, 'admin', '2021-07-09 10:49:46');
+INSERT INTO `t_sys_role_resource` VALUES (428, 1, 59, 1, 'admin', '2021-07-09 10:50:20');
+INSERT INTO `t_sys_role_resource` VALUES (429, 8, 59, 1, 'admin', '2021-07-09 10:50:32');
+INSERT INTO `t_sys_role_resource` VALUES (431, 6, 57, 1, 'admin', '2021-07-12 16:44:12');
+INSERT INTO `t_sys_role_resource` VALUES (433, 1, 60, 1, 'admin', '2021-07-19 20:19:29');
+INSERT INTO `t_sys_role_resource` VALUES (434, 1, 61, 1, 'admin', '2021-07-19 20:19:29');
+INSERT INTO `t_sys_role_resource` VALUES (435, 1, 62, 1, 'admin', '2021-07-19 20:19:29');
+INSERT INTO `t_sys_role_resource` VALUES (436, 1, 63, 1, 'admin', '2021-07-20 10:48:39');
+INSERT INTO `t_sys_role_resource` VALUES (437, 1, 64, 1, 'admin', '2021-07-20 10:48:39');
+INSERT INTO `t_sys_role_resource` VALUES (444, 7, 39, 1, 'admin', '2021-09-09 10:10:30');
+INSERT INTO `t_sys_role_resource` VALUES (450, 6, 16, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (451, 6, 17, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (452, 6, 18, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (453, 6, 37, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (454, 6, 40, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (455, 6, 41, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (456, 6, 42, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (457, 6, 43, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (458, 6, 44, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (459, 6, 45, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (460, 6, 46, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (461, 6, 47, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (462, 6, 36, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (463, 6, 38, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (464, 6, 59, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (465, 6, 49, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (466, 6, 58, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (467, 6, 54, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (468, 6, 55, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (469, 6, 60, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (470, 6, 61, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (471, 6, 62, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (472, 6, 63, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (473, 6, 64, 1, 'admin', '2021-09-09 15:52:38');
+INSERT INTO `t_sys_role_resource` VALUES (479, 6, 19, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (480, 6, 21, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (481, 6, 29, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (482, 6, 30, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (483, 6, 34, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (484, 6, 20, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (485, 6, 22, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (486, 6, 23, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (487, 6, 24, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (488, 6, 25, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (489, 6, 26, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (490, 6, 27, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (491, 6, 28, 1, 'admin', '2021-09-09 15:53:56');
+INSERT INTO `t_sys_role_resource` VALUES (492, 8, 42, 1, 'admin', '2021-11-05 15:59:16');
+INSERT INTO `t_sys_role_resource` VALUES (493, 8, 43, 1, 'admin', '2021-11-05 15:59:16');
+INSERT INTO `t_sys_role_resource` VALUES (494, 8, 47, 1, 'admin', '2021-11-05 15:59:16');
+INSERT INTO `t_sys_role_resource` VALUES (495, 8, 60, 1, 'admin', '2021-11-05 15:59:16');
+INSERT INTO `t_sys_role_resource` VALUES (496, 8, 61, 1, 'admin', '2021-11-05 15:59:16');
+INSERT INTO `t_sys_role_resource` VALUES (497, 8, 62, 1, 'admin', '2021-11-05 15:59:16');
+INSERT INTO `t_sys_role_resource` VALUES (498, 8, 63, 1, 'admin', '2021-11-05 15:59:16');
+INSERT INTO `t_sys_role_resource` VALUES (499, 8, 64, 1, 'admin', '2021-11-05 15:59:16');
+INSERT INTO `t_sys_role_resource` VALUES (500, 1, 72, 1, 'admin', '2022-07-14 11:03:09');
+INSERT INTO `t_sys_role_resource` VALUES (501, 1, 71, 1, 'admin', '2022-07-14 11:03:09');
+INSERT INTO `t_sys_role_resource` VALUES (502, 1, 79, 1, 'admin', '2022-07-14 11:03:09');
+INSERT INTO `t_sys_role_resource` VALUES (503, 1, 80, 1, 'admin', '2022-07-14 11:03:09');
+INSERT INTO `t_sys_role_resource` VALUES (504, 1, 81, 1, 'admin', '2022-07-14 11:03:09');
+INSERT INTO `t_sys_role_resource` VALUES (505, 1, 82, 1, 'admin', '2022-07-14 11:03:09');
+INSERT INTO `t_sys_role_resource` VALUES (506, 1, 83, 1, 'admin', '2022-07-14 11:03:09');
+INSERT INTO `t_sys_role_resource` VALUES (507, 1, 84, 1, 'admin', '2022-07-14 11:10:11');
+INSERT INTO `t_sys_role_resource` VALUES (508, 1, 85, 1, 'admin', '2022-07-14 11:10:11');
+INSERT INTO `t_sys_role_resource` VALUES (510, 1, 87, 1, 'admin', '2022-07-14 11:10:11');
+INSERT INTO `t_sys_role_resource` VALUES (511, 1, 88, 1, 'admin', '2022-10-08 10:54:06');
+INSERT INTO `t_sys_role_resource` VALUES (512, 8, 80, 1, 'admin', '2022-10-08 10:54:34');
+INSERT INTO `t_sys_role_resource` VALUES (513, 8, 81, 1, 'admin', '2022-10-08 10:54:34');
+INSERT INTO `t_sys_role_resource` VALUES (515, 8, 79, 1, 'admin', '2022-10-08 10:54:34');
+INSERT INTO `t_sys_role_resource` VALUES (516, 1, 93, 1, 'admin', '2022-10-26 20:03:14');
+INSERT INTO `t_sys_role_resource` VALUES (517, 1, 94, 1, 'admin', '2022-10-26 20:03:14');
+INSERT INTO `t_sys_role_resource` VALUES (518, 1, 96, 1, 'admin', '2022-10-26 20:03:14');
+INSERT INTO `t_sys_role_resource` VALUES (519, 1, 98, 1, 'admin', '2022-10-26 20:03:14');
+INSERT INTO `t_sys_role_resource` VALUES (520, 1, 95, 1, 'admin', '2022-10-26 20:03:14');
+INSERT INTO `t_sys_role_resource` VALUES (521, 1, 97, 1, 'admin', '2022-10-26 20:03:14');
+INSERT INTO `t_sys_role_resource` VALUES (522, 1, 99, 1, 'admin', '2022-10-26 20:03:14');
+INSERT INTO `t_sys_role_resource` VALUES (523, 1, 100, 1, 'admin', '2022-10-26 20:03:14');
+INSERT INTO `t_sys_role_resource` VALUES (524, 1, 101, 1, 'admin', '2022-10-26 20:03:14');
+INSERT INTO `t_sys_role_resource` VALUES (525, 1, 102, 1, 'admin', '2022-10-26 20:03:14');
+
+-- 删除旧模块项目相关表
+drop table t_project;
+drop table t_project_env;
+drop table t_project_member;
+
+-- 去除表中与项目相关的字段
+alter table t_machine drop project_id;
+alter table t_machine drop project_name;
+
+alter table t_db drop project_id;
+alter table t_db drop project;
+alter table t_db drop env_id;
+alter table t_db drop env;
+
+alter table t_redis drop project_id;
+alter table t_redis drop project;
+alter table t_redis drop env_id;
+alter table t_redis drop env;
+
+alter table t_mongo drop project_id;
+alter table t_mongo drop project;
+alter table t_mongo drop env_id;
+alter table t_mongo drop env;
+
+-- 新增标签相关字段
+alter table t_machine add tag_id bigint COMMENT '标签id';
+alter table t_machine add tag_path varchar(255) COMMENT '标签路径';
+
+alter table t_db add tag_id bigint COMMENT '标签id';
+alter table t_db add tag_path varchar(255) COMMENT '标签路径';
+
+alter table t_redis add tag_id bigint COMMENT '标签id';
+alter table t_redis add tag_path varchar(255) COMMENT '标签路径';
+
+alter table t_mongo add tag_id bigint COMMENT '标签id';
+alter table t_mongo add tag_path varchar(255) COMMENT '标签路径';
+
+-- redis新增名称字段
+alter table t_redis add name varchar(255) COMMENT '名称';
+
+alter table t_sys_config add params varchar(500) COMMENT '参数配置';
+
+alter table t_sys_account add name varchar(30) COMMENT '姓名';
+
+-- 标签管理相关表
+CREATE TABLE `t_tag_tree` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` bigint(20) NOT NULL DEFAULT '0',
+  `code` varchar(36) COLLATE utf8mb4_bin NOT NULL COMMENT '标识符',
+  `code_path` varchar(255) COLLATE utf8mb4_bin NOT NULL COMMENT '标识符路径',
+  `name` varchar(36) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '名称',
+  `remark` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `create_time` datetime NOT NULL,
+  `creator_id` bigint(20) NOT NULL,
+  `creator` varchar(36) COLLATE utf8mb4_bin NOT NULL,
+  `update_time` datetime NOT NULL,
+  `modifier_id` bigint(20) NOT NULL,
+  `modifier` varchar(36) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_code_path` (`code_path`(100)) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='标签树';
+
+CREATE TABLE `t_team` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(36) COLLATE utf8mb4_bin NOT NULL COMMENT '名称',
+  `remark` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '备注',
+  `create_time` datetime NOT NULL,
+  `creator_id` bigint(20) NOT NULL,
+  `creator` varchar(36) COLLATE utf8mb4_bin DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `modifier_id` bigint(20) DEFAULT NULL,
+  `modifier` varchar(36) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='团队信息';
+
+CREATE TABLE `t_tag_tree_team` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tag_id` bigint(20) NOT NULL COMMENT '项目树id',
+  `tag_path` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `team_id` bigint(20) NOT NULL COMMENT '团队id',
+  `create_time` datetime NOT NULL,
+  `creator_id` bigint(20) NOT NULL,
+  `creator` varchar(36) COLLATE utf8mb4_bin NOT NULL,
+  `update_time` datetime NOT NULL,
+  `modifier_id` bigint(20) NOT NULL,
+  `modifier` varchar(36) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_tag_id` (`tag_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='标签树团队关联信息';
+
+CREATE TABLE `t_team_member` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `team_id` bigint(20) NOT NULL COMMENT '项目团队id',
+  `account_id` bigint(20) NOT NULL COMMENT '成员id',
+  `username` varchar(36) COLLATE utf8mb4_bin NOT NULL,
+  `create_time` datetime NOT NULL,
+  `creator_id` bigint(20) NOT NULL,
+  `creator` varchar(36) COLLATE utf8mb4_bin NOT NULL,
+  `update_time` datetime NOT NULL,
+  `modifier_id` bigint(20) NOT NULL,
+  `modifier` varchar(36) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='团队成员表';
+
+INSERT INTO `t_tag_tree` VALUES (33, 0, 'default', 'default', '默认', '默认标签', '2022-10-26 20:04:19', 1, 'admin', '2022-10-26 20:04:19', 1, 'admin');
+INSERT INTO `t_team` VALUES (3, '默认团队', '默认团队', '2022-10-26 20:04:36', 1, 'admin', '2022-10-26 20:04:36', 1, 'admin');
+INSERT INTO `t_tag_tree_team` VALUES (31, 33, 'default', 3, '2022-10-26 20:04:45', 1, 'admin', '2022-10-26 20:04:45', 1, 'admin');
+INSERT INTO `t_team_member` VALUES (7, 3, 1, 'admin', '2022-10-26 20:04:36', 1, 'admin', '2022-10-26 20:04:36', 1, 'admin');
+
+UPDATE t_db SET tag_id = 33, tag_path = 'default';
+UPDATE t_machine SET tag_id = 33, tag_path = 'default';
+UPDATE t_redis SET tag_id = 33, tag_path = 'default';
+UPDATE t_mongo SET tag_id = 33, tag_path = 'default';
