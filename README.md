@@ -35,3 +35,7 @@ docker run -d --name mayfly -p 8888:8888 \
 - 默认用户名: admin
 - 默认密码: admin123.
 - 注意默认密码admin123. 最后是有个"."的
+
+### 官方使用说明
+- 项目文档: https://objs.gitee.io/mayfly-go-docs
+- 系统操作视频: https://space.bilibili.com/484091081/channel/collectiondetail?sid=392854
